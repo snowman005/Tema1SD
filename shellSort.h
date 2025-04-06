@@ -3,6 +3,8 @@
 
 void shellSort(std::vector<int>& arr, int minNumber, int maxNumber) {
     if (arr.empty()) return;
+
+    if (maxNumber - minNumber >= 100000) return;
     
     int n = arr.size();
     for (int gap = n/2; gap > 0; gap /= 2) {

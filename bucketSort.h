@@ -1,38 +1,29 @@
 #pragma once
 #include <vector>
+#include <algorithm>
 
 void bucketSort(std::vector<int>& arr, int minNumber, int maxNumber) {
-    if (arr.empty()) return;
-    
-    int n = arr.size();
-    
+
     int range = maxNumber - minNumber + 1;
     
-    std::vector<std::vector<int>> buckets(n);
+    int n = arr.size();
+    int numBuckets = std::min(static_cast<int>(std::sqrt(n)), 200000);
     
-    for (int i = 0; i < n; i++) {
-        int bucketIndex = (arr[i] - minNumber) * (n - 1) / range;
-        buckets[bucketIndex].push_back(arr[i]);
+    std::vector<std::vector<int>> buckets(numBuckets);
+    
+    for (int num : arr) {
+        int bucketIndex = static_cast<int>((static_cast<long long>(num) - minNumber) * (numBuckets - 1) / range);
+        buckets[bucketIndex].push_back(num);
     }
     
-    for (int i = 0; i < n; i++) {
-        for (int j = 1; j < buckets[i].size(); j++) {
-            int key = buckets[i][j];
-            int k = j - 1;
-            
-            while (k >= 0 && buckets[i][k] > key) {
-                buckets[i][k + 1] = buckets[i][k];
-                k--;
-            }
-            
-            buckets[i][k + 1] = key;
-        }
+    for (auto& bucket : buckets) {
+        std::sort(bucket.begin(), bucket.end());
     }
     
     int index = 0;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < buckets[i].size(); j++) {
-            arr[index++] = buckets[i][j];
+    for (const auto& bucket : buckets) {
+        for (int num : bucket) {
+            arr[index++] = num;
         }
     }
 }
