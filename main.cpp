@@ -37,17 +37,17 @@ int main() {
     };
 
     for (int test = 1; test <= T; ++test) {
-        size_t numElements;
-        long long minVal, maxVal;
-        std::cin >> numElements >> minVal >> maxVal;
-        std::vector<long long> originalVector;
-
-        try {
-          originalVector = generateRandomVector(numElements, minVal, maxVal);
-        } catch (int code) {
-          std::cerr << "Generating vector has failed for test: " << test << "\n";
-          return code;
-        }
+      size_t numElements;
+      long long minVal, maxVal;
+      std::cin >> numElements >> minVal >> maxVal;
+      std::vector<long long> originalVector;
+      
+      try {
+        originalVector = generateRandomVector(numElements, minVal, maxVal);
+      } catch (int code) {
+        std::cerr << "Generating vector has failed for test: " << test << "\n";
+        return code;
+      }
         
         std::vector<std::future<SortResult>> futures;
 

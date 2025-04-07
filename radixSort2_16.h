@@ -26,7 +26,7 @@ void radixSort2_16(std::vector<long long>& arr, long long minNumber, long long m
 
     long long maxAdjusted = maxNumber + offset;
 
-    for (long long shift = 0; (maxAdjusted >> shift) > 0; shift += 16) {
+    for (long long shift = 0; (maxAdjusted >> shift) > 0 && shift < 64; shift += 16) {
         std::vector<long long> count(BASE1, 0);
         std::vector<long long> output(size);
 
