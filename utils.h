@@ -26,7 +26,10 @@ bool isSorted(const std::vector<long long>& arr) {
 
 std::string formatNumber(long long number) {
   std::ostringstream oss;
-  if (number >= 1'000'000'000) {
+  if (number >= 1'000'000'000'000) {
+    oss << std::fixed << std::setprecision(1) << (number / 1'000'000'000'000.0) << "T";
+  }
+  else if (number >= 1'000'000'000) {
       oss << std::fixed << std::setprecision(1) << (number / 1'000'000'000.0) << "B";
   } else if (number >= 1'000'000) {
       oss << std::fixed << std::setprecision(1) << (number / 1'000'000.0) << "M";
