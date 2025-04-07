@@ -2,17 +2,17 @@
 #include <vector>
 #include <algorithm>
 
-void bucketSort(std::vector<int>& arr, int minNumber, int maxNumber) {
+void bucketSort(std::vector<long long>& arr, long long minNumber, long long maxNumber) {
 
-    int range = maxNumber - minNumber + 1;
+    long long range = maxNumber - minNumber + 1;
     
-    int n = arr.size();
-    int numBuckets = std::min(static_cast<int>(std::sqrt(n)), 200000);
+    long long n = arr.size();
+    long long numBuckets = std::min(static_cast<long long>(std::sqrt(n)), static_cast<long long>(5000000));
     
-    std::vector<std::vector<int>> buckets(numBuckets);
+    std::vector<std::vector<long long>> buckets(numBuckets);
     
-    for (int num : arr) {
-        int bucketIndex = static_cast<int>((static_cast<long long>(num) - minNumber) * (numBuckets - 1) / range);
+    for (long long num : arr) {
+        long long bucketIndex = static_cast<long long>((static_cast<long long>(num) - minNumber) * (numBuckets - 1) / range);
         buckets[bucketIndex].push_back(num);
     }
     
@@ -20,9 +20,9 @@ void bucketSort(std::vector<int>& arr, int minNumber, int maxNumber) {
         std::sort(bucket.begin(), bucket.end());
     }
     
-    int index = 0;
+    long long index = 0;
     for (const auto& bucket : buckets) {
-        for (int num : bucket) {
+        for (long long num : bucket) {
             arr[index++] = num;
         }
     }

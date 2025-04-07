@@ -3,8 +3,8 @@
 #include <vector>
 #include <random>
 
-std::vector<int> generateRandomVector(size_t numElements, int minVal, int maxVal) {
-  std::vector<int> result;
+std::vector<long long> generateRandomVector(size_t numElements, long long minVal, long long maxVal) {
+  std::vector<long long> result;
   result.reserve(numElements);
 
   std::random_device rd;

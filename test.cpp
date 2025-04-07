@@ -11,8 +11,8 @@
 
 
 int main() {
-    std::vector<int> initial = generateRandomVector(30, 1, 300);
-    std::vector<int> arr = initial;
+    std::vector<long long> initial = generateRandomVector(30, 1, 300);
+    std::vector<long long> arr = initial;
 
     int minNumber = arr.empty() ? 0 : *std::min_element(arr.begin(), arr.end());
     int maxNumber = arr.empty() ? 0 : *std::max_element(arr.begin(), arr.end());

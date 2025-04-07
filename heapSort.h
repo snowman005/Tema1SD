@@ -2,10 +2,10 @@
 #include <vector>
 #include <algorithm>
 
-void heapify(std::vector<int>& arr, int n, int i) {
-    int largest = i;
-    int left = 2 * i + 1;
-    int right = 2 * i + 2;
+void heapify(std::vector<long long>& arr, long long n, long long i) {
+    long long largest = i;
+    long long left = 2 * i + 1;
+    long long right = 2 * i + 2;
 
     if (left < n && arr[left] > arr[largest])
         largest = left;
@@ -19,15 +19,15 @@ void heapify(std::vector<int>& arr, int n, int i) {
     }
 }
 
-void heapSort(std::vector<int>& arr, int minNumber, int maxNumber) {
+void heapSort(std::vector<long long>& arr, long long minNumber, long long maxNumber) {
     if (arr.empty()) return;
     
-    int n = arr.size();
+    long long n = arr.size();
     
-    for (int i = n/2 - 1; i >= 0; i--)
+    for (long long i = n/2 - 1; i >= 0; i--)
         heapify(arr, n, i);
 
-    for (int i = n-1; i > 0; i--) {
+    for (long long i = n-1; i > 0; i--) {
         std::swap(arr[0], arr[i]);
         heapify(arr, i, 0);
     }

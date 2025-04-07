@@ -7,7 +7,7 @@
 #include <iostream>
 #include <chrono>
 
-using SortFunc = void(*)(std::vector<int>&, int, int);
+using SortFunc = void(*)(std::vector<long long>&, long long, long long);
 
 struct SortResult {
     std::string name;
@@ -15,7 +15,7 @@ struct SortResult {
     bool sortedCorrectly;
 };
 
-bool isSorted(const std::vector<int>& arr) {
+bool isSorted(const std::vector<long long>& arr) {
   for (size_t i = 1; i < arr.size(); ++i) {
       if (arr[i-1] > arr[i]) {
           return false;
@@ -58,11 +58,11 @@ std::string formatTime(long long milliseconds) {
 }
 
 auto runSortTask = [](int i,
-                      std::vector<int> vec,
+                      std::vector<long long> vec,
                       const std::string& sortName,
                       auto sortFunc,
-                      int minVal,
-                      int maxVal) -> SortResult {
+                      long long minVal,
+                      long long maxVal) -> SortResult {
     auto start = std::chrono::high_resolution_clock::now();
 
     try {

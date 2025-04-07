@@ -38,9 +38,9 @@ int main() {
 
     for (int test = 1; test <= T; ++test) {
         size_t numElements;
-        int minVal, maxVal;
+        long long minVal, maxVal;
         std::cin >> numElements >> minVal >> maxVal;
-        std::vector<int> originalVector;
+        std::vector<long long> originalVector;
 
         try {
           originalVector = generateRandomVector(numElements, minVal, maxVal);

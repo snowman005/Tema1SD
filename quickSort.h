@@ -2,8 +2,8 @@
 #include <vector>
 #include <algorithm>
 
-int medianOfThree(std::vector<int>& arr, int left, int right) {
-    int mid = left + (right - left) / 2;
+long long medianOfThree(std::vector<long long>& arr, long long left, long long right) {
+    long long mid = left + (right - left) / 2;
     
     if (arr[right] < arr[left]) std::swap(arr[left], arr[right]);
     if (arr[mid] < arr[left]) std::swap(arr[mid], arr[left]);
@@ -12,14 +12,14 @@ int medianOfThree(std::vector<int>& arr, int left, int right) {
     return mid;
 }
 
-int partition(std::vector<int>& arr, int left, int right) {
-    int pivotIndex = medianOfThree(arr, left, right);
-    int pivotValue = arr[pivotIndex];
+long long partition(std::vector<long long>& arr, long long left, long long right) {
+    long long pivotIndex = medianOfThree(arr, left, right);
+    long long pivotValue = arr[pivotIndex];
     
     std::swap(arr[pivotIndex], arr[right]);
     
-    int storeIndex = left;
-    for (int i = left; i < right; ++i) {
+    long long storeIndex = left;
+    for (long long i = left; i < right; ++i) {
         if (arr[i] < pivotValue) {
             std::swap(arr[i], arr[storeIndex]);
             ++storeIndex;
@@ -30,15 +30,15 @@ int partition(std::vector<int>& arr, int left, int right) {
     return storeIndex;
 }
 
-void quickSortHelper(std::vector<int>& arr, int left, int right) {
+void quickSortHelper(std::vector<long long>& arr, long long left, long long right) {
     if (left >= right) return;
     
-    int pivot = partition(arr, left, right);
+    long long pivot = partition(arr, left, right);
     quickSortHelper(arr, left, pivot - 1);
     quickSortHelper(arr, pivot + 1, right);
 }
 
-void quickSort(std::vector<int>& arr, int minNumber, int maxNumber) {
+void quickSort(std::vector<long long>& arr, long long minNumber, long long maxNumber) {
     if (arr.empty()) return;
     quickSortHelper(arr, 0, arr.size() - 1);
 }
